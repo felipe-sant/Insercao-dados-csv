@@ -7,4 +7,8 @@ export default class Produto {
         this.pro_descricao = pro_descricao
         this.gru_id = gru_id
     }
+
+    public toString(): string {
+        return `${this.id} - ${this.pro_descricao}`
+    }
 }

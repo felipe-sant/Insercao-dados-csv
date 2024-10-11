@@ -5,4 +5,8 @@ export default class Grupo {
         this.id = id;
         this.gru_descricao = gru_descricao;
     }
+
+    public toString(): string {
+        return `Grupo: ${this.id} - ${this.gru_descricao}`;
+    }
 }

@@ -5,4 +5,8 @@ export default class Preparacao {
         this.id = id;
         this.pre_descricao = pre_descricao;
     }
+
+    public toString(): string {
+        return `${this.id} - ${this.pre_descricao}`;
+    }
 }

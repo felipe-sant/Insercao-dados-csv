@@ -4,6 +4,7 @@ import GrupoControler from "../controllers/GrupoControler";
 const routes = Router()
 const controller = new GrupoControler()
 
+routes.get('/grupo/importar', controller.importar)
 routes.post('/grupo', controller.create)
 routes.get('/grupo', controller.read)
 routes.delete('/grupo', controller.delete)

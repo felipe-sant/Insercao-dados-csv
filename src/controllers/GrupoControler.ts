@@ -1,7 +1,23 @@
 import { Request, Response } from 'express'
 import query from '../database/db'
+import lerGrupos from '../functions/lerGrupos'
 
 export default class GrupoControler {
+    public async importar(req: Request, res: Response) {
+        try {
+            const grupos = await lerGrupos()
+            for (const grupo of grupos) {
+                await query(
+                    "INSERT INTO grupo(id, gru_descricao) VALUES ($1,$2) RETURNING id",
+                    [grupo.id, grupo.gru_descricao]
+                )
+            }
+            res.status(200).json({ message: 'Importação realizada com sucesso' })
+        } catch {
+            res.status(500).json({ message: 'Internal server error' })
+        }
+    }
+
     public async create(req: Request, res: Response) {
         const { id, gru_descricao } = req.body
         try {
